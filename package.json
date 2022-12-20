@@ -7,6 +7,7 @@
 	"displayName": "LOE Tracker",
 	"description": "Track the LOE for your git branch",
 	"version": "0.0.1",
+	"publisher": "DeForesttThompson",
 	"engines": {
 		"vscode": "^1.74.0"
 	},
