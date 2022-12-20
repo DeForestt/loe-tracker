@@ -1,5 +1,9 @@
 {
-  "name": "loe-tracker",
+	"name": "loe-tracker",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/DeForestt/loe-tracker"
+	},
 	"displayName": "LOE Tracker",
 	"description": "Track the LOE for your git branch",
 	"version": "0.0.1",
@@ -10,7 +14,7 @@
 		"Other"
 	],
 	"activationEvents": [
-        "*"
+        "workspaceContains:.git"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
