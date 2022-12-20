@@ -10,7 +10,7 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:loe-tracker.helloWorld"
+        "*"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -18,6 +18,10 @@
 			{
 				"command": "loe-tracker.helloWorld",
 				"title": "Hello World"
+			},
+			{
+				"command": "loe-tracker.showLOE",
+				"title": "Show LOE"
 			}
 		]
 	},
