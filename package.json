@@ -6,7 +6,7 @@
 	},
 	"displayName": "LOE Tracker",
 	"description": "Track the LOE for your git branch",
-	"version": "0.0.1",
+	"version": "0.2.1",
 	"publisher": "DeForesttThompson",
 	"engines": {
 		"vscode": "^1.74.0"
@@ -27,6 +27,14 @@
 			{
 				"command": "loe-tracker.showLOE",
 				"title": "Show LOE"
+			},
+			{
+				"command": "loe-tracker.pauseLOE",
+				"title": "Pause Tracking"
+			},
+			{
+				"command": "loe-tracker.resumeLOE",
+				"title": "Resume Tracking"
 			}
 		]
 	},
