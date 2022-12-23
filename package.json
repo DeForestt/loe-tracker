@@ -27,6 +27,14 @@
 			{
 				"command": "loe-tracker.showLOE",
 				"title": "Show LOE"
+			},
+			{
+				"command": "loe-tracker.pauseLOE",
+				"title": "Pause Tracking"
+			},
+			{
+				"command": "loe-tracker.resumeLOE",
+				"title": "Resume Tracking"
 			}
 		]
 	},

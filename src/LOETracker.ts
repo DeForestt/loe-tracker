@@ -7,6 +7,7 @@ interface BranchData {
 };
 
 export const track = (context : vscode.ExtensionContext) : void => {
+    let pause: boolean = false;
     console.log('LOE Tracker: Tracking time on branches');
     const branchData = context.workspaceState.get<BranchData[]>('branchData', []);
     let currentBranch = getCurrentBranch();
@@ -24,7 +25,7 @@ export const track = (context : vscode.ExtensionContext) : void => {
     // increment the time every second
     setInterval(() => {
         const currentBranchData = branchData.find((brachData) => brachData.branch === currentBranch);
-        if (currentBranchData) {
+        if (currentBranchData && !pause) {
             currentBranchData.time++;
         };
     }, 1000);
@@ -45,16 +46,29 @@ export const track = (context : vscode.ExtensionContext) : void => {
         console.log(`Loe Tracker: Switched to branch ${currentBranch}`);
     });
 
-    let disposable = vscode.commands.registerCommand('loe-tracker.showLOE', () => {
+    let showLOE = vscode.commands.registerCommand('loe-tracker.showLOE', () => {
         const output = vscode.window.createOutputChannel('LOE Tracker');
         output.show();
+        output.appendLine(`LOE Tracker: ${pause? 'Paused' : 'Tracking'}`);
         output.appendLine('Branches:');
         branchData.forEach((branchData) => {
             output.appendLine(`${branchData.branch.replace('\n', '')}: ${secondsToHms(branchData.time)}`);
         });
     });
 
-    context.subscriptions.push(disposable);
+    let pauseLOE = vscode.commands.registerCommand('loe-tracker.pauseLOE', () => {
+        pause = true;
+    });
+
+    context.subscriptions.push(pauseLOE);
+
+    let resumeLOE = vscode.commands.registerCommand('loe-tracker.resumeLOE', () => {
+        pause = false;
+    });
+
+    context.subscriptions.push(resumeLOE);
+
+    context.subscriptions.push(showLOE);
 };
 
 function secondsToHms(d : number) {
